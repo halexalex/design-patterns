@@ -2,21 +2,21 @@ class Elf:
     name = 'Malfurion'
 
     def nall_nin(self):
-        print('Elf says: Calling the Overlord...')
+        print('Elf says: Calling the Overlord ...')
 
 
 class Dwarf:
     def estver_narho(self):
-        print('Dwarf says: Calling the Overlord...')
+        print('Dwarf says: Calling the Overlord ...')
 
 
 class Human:
-    def ring_mif(self):
-        print('Human says: Calling the Overlord...')
+    def ring_mig(self):
+        print('Human says: Calling the Overlord ...')
 
 
 class MinionAdapter:
-    _initialized = False
+    _initialised = False
 
     def __init__(self, minion, **adapted_methods):
         self.minion = minion
@@ -28,7 +28,7 @@ class MinionAdapter:
         self._initialised = True
 
     def __getattr__(self, attr):
-        """ Attributes not in Adapter are delegated to the minion """
+        """Attributes not in Adapter are delegated to the minion"""
         return getattr(self.minion, attr)
 
     def __setattr__(self, key, value):
@@ -43,20 +43,20 @@ class MinionAdapter:
 if __name__ == '__main__':
     minion_adapters = [
         MinionAdapter(Elf(), call_me='nall_nin'),
-        MinionAdapter(Dwarf(), call_me='estver_harho'),
+        MinionAdapter(Dwarf(), call_me='estver_narho'),
         MinionAdapter(Human(), call_me='ring_mig')
     ]
 
     for adapter in minion_adapters:
         adapter.call_me()
 
-        elf_adapter = minion_adapters[0]
-        print()
-        print(f'Name from Adapter: {elf_adapter.name}')
-        print(f'Name from Minion: {elf_adapter.minion.name}')
+    elf_adapter = minion_adapters[0]
+    print()
+    print(f'Name from Adapter: {elf_adapter.name}')
+    print(f'Name from Minion: {elf_adapter.minion.name}')
 
-        # minion_adapters[0].name = 'Tyrande'
+    minion_adapters[0].name = 'Tyrande'
 
-        # print()
-        # print(f'Name from Adapter: {elf_adapter.name}')
-        # print(f'Name from Minion: {elf_adapter.minion.name}')
+    print()
+    print(f'Name from Adapter: {elf_adapter.name}')
+    print(f'Name from Minion: {elf_adapter.minion.name}')
