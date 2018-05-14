@@ -16,7 +16,7 @@ class Human:
 
 
 class MinionAdapter:
-    _initialised = False
+    _initialized = False
 
     def __init__(self, minion, **adapted_methods):
         self.minion = minion
